@@ -1,0 +1,379 @@
+<%- include("./partials/header") %>
+<title>Lets Connect.</title>
+<link rel="stylesheet" href="/stylesheets/cover-pic.css" />
+<link rel="stylesheet" href="/stylesheets/home.css" />
+
+
+
+<div id="cover-pic" style="background-image: url(../images/home.jpg);">
+  <br /><br /><br /><br /><br />
+  <div class="container flash-container my-3">
+
+    <% if(error && error.length > 0 ) { %>
+    <div class="row d-flex justify-content-between m-2">
+      <div
+        class="alert alert-danger alert-dismissible fade show text-center"
+        role="alert"
+        style="width: 100%"
+      >
+        <%= error %>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <% } %> <% if(success && success.length > 0 ) { %>
+    <div class="row d-flex justify-content-between m-2">
+      <div
+        class="alert alert-success alert-dismissible fade show text-center"
+        role="alert"
+        style="width: 100%"
+      >
+        <%= success %>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+    <% } %>
+  </div>
+  <br /><br /><br /><br /><br /><br />
+
+  <div class="container" id="pic">
+    <h1  class="middle-logo">
+      Welcome to <b>&nbsp;Lets<span style="color: #ffb400">Connect</span></b>
+    </h1>
+    <div id="pic-text-two">Moving towards a better world!</div>
+    <br />
+    <div class="buttons">
+      <a id="pic-button" class="btn btn-md btn1" href="/signup/mentor"> <b>Join us as Mentor</b></a>
+      <a id="pic-button" class="btn btn-md btn2" href="/signup/mentee"><b>Join us as Mentee</b></a>
+    </div>
+  </div>
+</div>
+<div class="container-fluid p-0 m-0 " id="info">
+  <div class="row no-gutters">
+    <div class="col-12 col-lg-7 ">
+      <div class="container-fluid mr-0" id="about">
+        <div class="row justify-content-end">
+          <div class="a col-7">
+            <div class="heading">We need Volunteers.</div>
+            <div class="content1">
+              We believe economic prosperity can lead to social prosperity.We welcome liked-minded individuals who would like to join with us and help share knowledge and mentor people in need.
+            </div>
+            <br>
+            <!-- <div class="row justify-content-center justify-content-lg-start">
+              <a href="/volunteer" class="btn btn-md btn-warning rounded-0">Volunteer</a>  
+
+            </div> -->
+        </div>
+        </div>
+      </div>
+    </div>
+    <div style='background-color:black;' class="col-12 col-lg-5 mt-0 text-center text-lg-left">    
+        <div class="container-fluid" id="about2" >
+          <div class="heading">Donations so far</div>
+          <div class="heading"><i class="fas fa-rupee-sign"></i>10,28,097</div>
+    <br>  
+          <div class="content">
+           The donations will be used to reach out to folks from under represented sections of the society and help connect them to our mentors.  
+          </div>
+          <br />
+          <a href="/donate" class="btn btn-md btn-dark rounded-0"> Donate Now</a>
+          <br>
+          <br> 
+             <br>
+        </div>
+    </div>
+  </div>
+</div>
+<!-- HEADERS -->
+<!--
+<div class="container-fluid m-0 p-0 jumbotron mt-0 " style="background-color:white;">
+  <div class="container-lg m-0 p-0 mx-auto">
+    <div class="sub-container">
+        <% var heading=["Help and Support","Volunteering","Education"] %>
+        <% var content=["Selfless giving is the art of living and Caring has the gift of making the ordinary special.","The best way to find yourself is to lose yourself in the service of others.","Education is simply the soul of a society as it passes from one generation to another."] %>
+        <% icons= ["fas fa-hand-holding-heart fa-3x" ,"fas fa-people-carry fa-3x","fas fa-book fa-3x"] %>
+        <% for(var i=0;i< 3;i++){ %>
+            <div class="col-6 col-md-3">
+                <div class="info2">
+                    <br>
+                    <div><span><i class="<%= icons[i] %>"></i> </span></div>
+                    <br>
+                    <div class="heading2"><%= heading[i] %></div>
+                    <br>
+                    <br>
+                    <div class="container">
+                        <%= content[i] %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+  </div>
+</div>
+<hr class="my-0">-->
+<!-- AID -->
+<div class="container p-4 text-center">
+  <h3><b>Lets</b><span style="color: #ffb400">.</span></h3>
+  <hr style="background-color: #ffb400 !important;height:3px;">
+  <div class="container" style="text-align:start; font-size: 20px;" >
+    <h4 style ="text-align:center"><b>Respect, Integrity, Collaboration, Innovation and Fun! </b></h4>
+    <!-- Lets Education Foundation is a Non-Profit Organisation (A section 8 company) working towards providing quality education to our children, the leaders of the future, during their higher secondary grades.
+    We provide after school support to high school students from less privileged backgrounds at a very affordable price. We, not only provide academic support, but also support students towards development of 21st century skills like Critical thinking, Collaboration, Ownership, Resilience and Empathy. All our structures are online and students from any part of the country can join us.
+    <br>
+    <br>
+    Lets is not a business or school. It is a mission to ensure that no one is left behind. It is a dream to ensure that everyone’s dreams come true.
+    <br> -->
+  </div>
+  <hr style="background-color: #ffb400 !important;height:3px;">
+</div>
+<!-- CAROUSEL -->
+<div class="container-md m-0 py-5 px-0 mx-auto text-center my-3 d-none d-md-block">
+  <div style="width: 95%;" class="row justify-content-center mx-auto pb-3">
+    <div class="col-10 pr-0 heading-section text-center">
+    <h4 class="c-heading mb-4">Support structures we offer</h4>
+    <!--<p>To making people discover their potential for action and change!</p>-->
+    </div>
+    </div>
+  <div class="row mx-auto my-auto">
+      <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
+          <div class="carousel-inner w-100" role="listbox">
+              <div class="carousel-item active">
+                  <div class="col-4">
+                    <div class="card p-3 text-center border-0">
+                      <div class="hover-outer-box rounded-circle my-2 ">
+                        <img
+                          src="https://images.unsplash.com/photo-1522881193457-37ae97c905bf?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
+                          class="card-img-top  rounded-circle "
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="hover-inner-box rounded-circle">
+                          <div class="hover-content"></div>
+                        </div> 
+                      </div>
+                      <h4 class="card-title">Good Mentors </h4>
+              
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="col-4">
+                    <div class="card p-3 text-center border-0">
+                      <div class="hover-outer-box rounded-circle my-2 ">
+                        <img
+                          src="https://images.pexels.com/photos/4556779/pexels-photo-4556779.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                          class="card-img-top rounded-circle card-img"
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="hover-inner-box rounded-circle">
+                          <div class="hover-content"></div>
+                        </div>
+                      </div>
+                      <!--<img src="/images/c1.jpg" class="card-img-top rounded-circle  " alt="...">--> 
+                      <h4 class="card-title">Internship Opportunites</h4>
+              
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="col-4">
+                    <div class="card p-3 text-center border-0">
+                      <div class="hover-outer-box rounded-circle my-2 ">
+                        <img
+                          src="https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZXhhbXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                          class="card-img-top rounded-circle  "
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="hover-inner-box rounded-circle">
+                          <div class="hover-content"></div>
+                        </div>
+                      </div>
+                      <!--<img src="/images/c1.jpg" class="card-img-top rounded-circle  " alt="..."> -->
+                      <h4 class="card-title">Support for competitive exams</h4>
+              
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="col-4">
+                    <div class="card p-3 text-center border-0">
+                      <div class="hover-outer-box rounded-circle my-2 ">
+                        <img
+                          src="https://images.unsplash.com/photo-1541844053589-346841d0b34c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bGVhZGVyc2hpcHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+                          class="card-img-top rounded-circle  "
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="hover-inner-box rounded-circle">
+                          <div class="hover-content"></div>
+                        </div>
+                      </div>
+                      <h4 class="card-title">Leadership Skills</h4>
+              
+                    </div>              
+                  </div>
+              </div>
+              <div class="carousel-item">
+                  <div class="col-4">
+                    <div class="card p-3 text-center border-0">
+                      <div class="hover-outer-box rounded-circle my-2 ">
+                        <img
+                          src="https://media.istockphoto.com/photos/glass-jar-filled-with-coins-placed-beside-a-pile-of-coins-saving-for-picture-id1257309812?k=6&m=1257309812&s=612x612&w=0&h=igaVT1ZvSDjiDYQ2n_V66GoM76ABa0O85bLwa-7fOeQ="
+                          class="card-img-top rounded-circle  "
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="hover-inner-box rounded-circle">
+                          <div class="hover-content"></div>
+                        </div>
+                      </div>
+                      <!--<img src="/images/c1.jpg" class="card-img-top rounded-circle  " alt="...">-->
+                      <h4 class="card-title">Support for financial independence</h4>
+              
+                    </div>
+                  </div>
+              </div>
+              <!-- <div class="carousel-item">
+                  <div class="col-4">
+                    <div class="card p-3 text-center border-0">
+                      <div class="hover-outer-box rounded-circle my-2 ">
+                        <img
+                          src="https://images.unsplash.com/photo-1559294824-627e9738df81?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NHx8d29ybGQlMjBwZWFjZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=60"
+                          class="card-img-top rounded-circle  "
+                          alt=""
+                          srcset=""
+                        />
+                        <div class="hover-inner-box rounded-circle">
+                          <div class="hover-content"></div>
+                        </div>
+                      </div>
+                      <img src="/images/c1.jpg" class="card-img-top rounded-circle  " alt="..."> 
+                      <h4 class="card-title">Save Earth Programmes</h4>
+              
+                    </div>               
+                  </div>
+              </div> -->
+          </div>
+          <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+              <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+  </div>
+</div>
+<br class="d-none d-md-block">
+<br class="d-none d-md-block">
+<!-- TESTIMONY -->
+<div class="testimony-section  mt-0 mt-md-5 bg-warning">
+<div class="container w-75 p-0  m-0 mx-auto">
+  <div class="row justify-content-center ">
+      <!-- <div class="col-lg-6 pl-5 d-flex">
+        <div class="testimony-img py-5" style="background-image: url('/images/testimony.png');"></div>
+      </div> 
+      <div class="col-lg-6 pr-5 text-center text-lg-left">
+        <div class="testimonial-header pt-5">
+          
+        </div> -->
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+          
+          <ol class="carousel-indicators mt-2">
+            <li style="width: 15px; height: 15px; border-radius: 50%;" data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+            <li style="width: 15px; height: 15px; border-radius: 50%;" data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+            <li style="width: 15px; height: 15px; border-radius: 50%;" data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item mb-5  active" data-interval="3000" >
+              <div class="item w-100">
+                <div class="testimony-wrap pb-4">
+                <div class="text mb-3 ">
+                  <h2>
+                    Our Beliefs
+                  </h2>
+                <p class="mb-4 text-left">
+                  <span class="comma"> "</span>         
+                  For us, CLAY stands for Centre for Learning, Affection and joY. We believe that education shouldn’t become a burden on students rather it should enable them to bloom, shine, and fly. To promote the same, we provide educational support to students through affordable online classes with a lot of love and responsibility. We believe that once a student starts learning passionately, then nothing can stop her from making this world a better place than what they have received.
+                  <span class="comma"> "</span>
+                </p>
+                </div>
+                
+                <!-- <div class="d-flex mt-4">
+                <div class="user-img" style="background-image: url('data:image/jpeg;base64,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')">
+                </div>
+                <div class="pos ml-3">
+                <p class="name mb-1">Saurav Ganguly</p>
+                <small class="text-muted">President, Cricket Association of Bengal</small>
+                </div>
+                </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item mb-5"  data-interval="3000" >
+              <div class="item w-100">
+                <div class="testimony-wrap pb-4">
+                <div class="text mb-3 ">
+                  <h2>
+                    Our History
+                  </h2>
+                <p class="mb-4">
+                  <span class="comma"> "</span>         
+                  Lets initiative was started by 3 Teach for India fellows on 27th April 2020 with an aim to support their students who had just cleared their 10th board exams. It was formally registered as a Section 8 company on 20th July, 2020 and since then, it has grown into a large network of some amazing teachers and learners who constantly work together towards a better future for everyone on this planet                  <span class="comma"> "</span>
+                </p>
+                </div>
+                <!-- <div class="d-flex mt-4">
+                <div class="user-img" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSesvy-XhGb6PGp9wbSbR6vkwIC5d616OQXsA&usqp=CAU')">
+                </div>
+                <div class="pos ml-3">
+                <p class="name mb-1">Nitish Khanna</p>
+                <small class="text-muted">Businessman,Mumbai</small>
+                </div>
+                </div> -->
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item mb-5"  data-interval="3000" >
+              <div class="item w-100">
+                <div class="testimony-wrap pb-4">
+                <div class="text mb-3 ">
+                  <h2>
+                    Our Vision
+                  </h2>
+                <p class="mb-4">
+                  <span class="comma"> "</span>         
+                  We envision a world where every child can avail of quality education at just a few clicks, withheld neither by their geographical location nor by their socio-economic conditions. We, like many others, want to revolutionise virtual education and make it accessible to all. We not only want our students to learn school curriculums but also want our students to enjoy a child-friendly environment, explore other subjects of their interests, do their passion projects, and develop themselves as leaders.                  <span class="comma"> "</span>
+                </p>
+                </div>
+                
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+   </div>
+  </div>
+</div>
+
+
+
+
+
+<%- include("./partials/footer") %>  

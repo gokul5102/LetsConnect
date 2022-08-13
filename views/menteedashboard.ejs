@@ -1,0 +1,114 @@
+<%- include("./partials/header") %>
+
+<title>Dashboard</title>
+
+<!-- Links for any stylesheets -->
+<link rel="stylesheet" href="/stylesheets/menteedashboard.css" />
+<div id="cover-pic" style="background-image: url(../images/dashboard.jpeg)">
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="container" id="pic">
+        <div id="pic-text-one" style="text-shadow: 0px 0px 10px black">
+            Your <span style="color: #ffb400">Dashboard.</span>
+        </div>
+        <!--<div style="color:black;font-weight:bold;">Scroll down to view your mentor</div>-->
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row" style="margin-left: auto; margin-right: auto">
+        <div class="col-12 mt-3">
+            <% if(!mentor){ %>
+                <br>
+                <br>
+                <br>
+                <div class="text-center"> You have no mentor assigned to you ! Wait for the admin to allocate mentors using the Ai Algorithm</div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <% }else{ %>
+                <div class="card">
+                    <div class="card-horizontal">
+                        
+                        <div class="card-body">
+                            <h3 class="card-title">Your<span style="color: #ffb400"> Mentor.</span></h3>
+                            <h5 class="card-text">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            Name: <%= mentor.name %>
+                                            <br />
+                                            Phone number: <%= mentor.phone %><br />
+                                            Email: <%= mentor.username %><br />
+                                        </div>
+                                        <div class="col-2">
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                Read More
+                                              </button>
+                                              
+                                              <!-- Modal -->
+                                              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="exampleModalLabel">Mentor <%= mentor.name %></h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      <div class="row">
+                                                          <div class="col-6">
+                                                                <div>Email: <%=mentor.username %></div>
+                                                                <br>
+                                                                <div>Phone: <%=mentor.phone %></div>
+                                                                <br>
+                                                          </div>
+                                                          <div class="col-6">
+                                                            <div>City: <%=mentor.city %></div>
+                                                            <br>
+                                                            <div>State: <%=mentor.state %></div>
+                                                            <br>
+                                                          </div>
+                                                      </div>
+                                                    </div>
+                                                    
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                      
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                    </div>
+                                
+                               
+                                <br>
+                                <br>
+                                <small
+                                >Connect to your mentor: </small>
+                                <br>
+                                <br>
+                                
+                                <a  class="btn-md btn  btn-outline-success" href="https://wa.me/91<%=mentor.phone%>?text=Hello">
+                                    <i class="far fa-comment p-2"></i>  Whatsapp</a>
+                            &nbsp;
+                                <a   class="btn-md btn  btn-outline-primary" href="https://www.zoom.com">
+                                    <i class="fas fa-solid fa-video p-2"></i>  Zoom</a>
+                            &nbsp;
+                            <a   class="btn-md btn  btn-outline-danger" href="https://www.zoom.com">
+                                <i class="fas fa-solid fa-cross p-2"></i>Request to change mentor</a>
+                            </h5>
+                        </div>
+                    </div>
+                </div>
+            <%} %>
+            
+        </div>
+    </div>
+</div>
+
+<!-- Link for js file if reqd -->
+<script src="/javascript/filename.js"></script>
+
+<%- include("./partials/footer") %>

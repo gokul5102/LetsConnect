@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+            integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+            crossorigin="anonymous"
+        />
+        <title>CC | Sign Up</title>
+    </head>
+
+    <body>
+        <div class="container pl-5" style="font-size: 22px">
+            <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+            <lord-icon
+                src="https://cdn.lordicon.com//dxjqoygy.json"
+                trigger="loop"
+                colors="primary:#121331,secondary:#e88c30"
+                style="width: 100px; height: 100px"
+            >
+            </lord-icon>
+            <a style="text-decoration: none; color: black" href="/"
+                >Welcome to <b>Lets<span style="color: rgb(255, 187, 0)">Connect</span> </b></a
+            >
+        </div>
+        <div class="container mx-auto px-auto" style="text-align: center">
+            <div style="font-size: x-large; color: orangered">Mentor Sign Up</div>
+            <small>Be the change that you want to see in the world !</small>
+        </div>
+        <div class="container flash-container my-3">
+            <% if(error && error.length > 0 ) { %>
+            <div class="row d-flex justify-content-between m-2">
+                <div
+                    class="alert alert-danger alert-dismissible fade show text-center"
+                    role="alert"
+                    style="width: 100%"
+                >
+                    <%= error %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <% } %> <% if(success && success.length > 0 ) { %>
+            <div class="row d-flex justify-content-between m-2">
+                <div
+                    class="alert alert-success alert-dismissible fade show text-center"
+                    role="alert"
+                    style="width: 100%"
+                >
+                    <%= success %>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+            <% } %>
+        </div>
+
+        <div class="container">
+          <form action="/signup" method="POST">
+            <div class="row mx-auto justify-content-between">
+                <div class="col-8 col-lg-5 mx-auto">
+                    <img src="/images/signup.svg" class="card-img" alt="" srcset="" />
+                </div>
+                <div class="col-8 col-lg-6 mx-auto mt-5 mt-lg-0">
+                    
+                        <div class="container mx-auto px-auto" style="max-width: 600px">
+                            <div class="form-group d-none">
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter Name"
+                                    name="type"
+                                    value="mentor"
+                                    required
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1"> <small>Your Name *</small> </label>
+                                <input
+                                    required
+                                    type="text"
+                                    class="form-control"
+                                    placeholder="Enter Name"
+                                    name="name"
+                                    required
+                                />
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">
+                                  <small>Your Phone Number *</small></label
+                              >
+                              <input
+                                  required
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="+91 xxxxxxxx"
+                                  name="phone"
+                                  required
+                              />
+                          </div>
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"><small> Your Email *</small></label>
+                            <input
+                                required
+                                type="text"
+                                class="form-control"
+                                placeholder="Enter Email"
+                                name="username"
+                                required
+                            />
+                        </div>
+                          <div class="form-group">
+                            <label for="exampleInputPassword1">
+                                <small> Password *</small></label
+                            >
+                            <input
+                                required
+                                type="password"
+                                class="form-control"
+                                placeholder="Password"
+                                name="password"
+                                required
+                            />
+                        </div>
+                            <div class="form-group">
+                                <label for="gender"><small> What is your gender? </small></label>
+                                <select id="dropdown" name="gender" class="form-control" required>
+                                    <option disabled selected value></option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                    <option value="prefernottosay">Prefer not to say</option>
+                                </select>
+                            </div>
+                          </div>
+              
+                        </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1"><small> City *</small></label>
+                              <input
+                                  required
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Enter City"
+                                  name="city"
+                                  required
+                              />
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1"><small> District *</small></label>
+                              <input
+                                  required
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Enter District"
+                                  name="district"
+                                  required
+                              />
+                          </div>
+                          <div class="form-group">
+                              <label for="exampleInputEmail1"><small> State *</small></label>
+                              <input
+                                  required
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="Enter State"
+                                  name="state"
+                                  required
+                              />
+                          </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label><small>First language preference </small></label>
+                              <select
+                                  id="dropdown"
+                                  name="lang1"
+                                  class="form-control"
+                                  required
+                              >
+                                  <option disabled selected value></option>
+                                  <option value="english">English</option>
+                                  <option value="hindi">Hindi</option>
+                                  <option value="marathi">Marathi</option>
+                                  <option value="gujarati">Gujarati</option>
+                                  <option value="tamil">Tamil</option>
+                                  <option value="telugu">Telugu</option>
+                                  <option value="malayalam">Malayalam</option>
+                                  <option value="kannada">Kannada</option>
+                                  <option value="punjabi">Punjabi</option>
+                                  <option value="bengali">Bengali</option>
+                                  <option value="assamese">Assamese</option>
+                                  <option value="urdu">Urdu</option>
+                                  <option value="sanskrit">Sanskrit</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label><small>Second language preference </small></label>
+                              <select
+                                  id="dropdown"
+                                  name="lang2"
+                                  class="form-control"
+                                  required
+                              >
+                                  <option disabled selected value></option>
+                                  <option value="english">English</option>
+                                  <option value="hindi">Hindi</option>
+                                  <option value="marathi">Marathi</option>
+                                  <option value="gujarati">Gujarati</option>
+                                  <option value="tamil">Tamil</option>
+                                  <option value="telugu">Telugu</option>
+                                  <option value="malayalam">Malayalam</option>
+                                  <option value="kannada">Kannada</option>
+                                  <option value="punjabi">Punjabi</option>
+                                  <option value="bengali">Bengali</option>
+                                  <option value="assamese">Assamese</option>
+                                  <option value="urdu">Urdu</option>
+                                  <option value="sanskrit">Sanskrit</option>
+                              </select>
+                          </div>
+                          <div class="form-group">
+                              <label><small>Third language preference </small></label>
+                              <select
+                                  id="dropdown"
+                                  name="lang3"
+                                  class="form-control"
+                                  required
+                              >
+                                  <option disabled selected value></option>
+                                  <option value="english">English</option>
+                                  <option value="hindi">Hindi</option>
+                                  <option value="marathi">Marathi</option>
+                                  <option value="gujarati">Gujarati</option>
+                                  <option value="tamil">Tamil</option>
+                                  <option value="telugu">Telugu</option>
+                                  <option value="malayalam">Malayalam</option>
+                                  <option value="kannada">Kannada</option>
+                                  <option value="punjabi">Punjabi</option>
+                                  <option value="bengali">Bengali</option>
+                                  <option value="assamese">Assamese</option>
+                                  <option value="urdu">Urdu</option>
+                                  <option value="sanskrit">Sanskrit</option>
+                              </select>
+                          </div>
+                          </div>
+                        </div>
+                            
+                            
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"><small> Number of mentees you can attend to*</small></label>
+                            <input
+                                required
+                                class="form-control"
+                                step=1
+                                placeholder="1"
+                                name="limit"
+                                type="number" id="quantity" min="1" max="10">
+                        </div>  
+                            
+                            
+
+                            <div class="form-group">
+                                <p>
+                                    <label>In which fields you can guide students??</label>
+                                    <span class="clue">(Select from a range of 0(beginner) to 10(expert))</span>
+                                </p>
+                                <div class="row">
+                                  <div class="col-3">
+                                    <label
+                                    ><input
+                                        id = "teaching"
+                                        name="teaching"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        onchange = myfunction(0)
+                                        title=""
+                                    />
+                                    Teaching</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="law"
+                                        id="law"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(1)
+                                    />
+                                    Law</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="accounting"
+                                        id="accounting"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(2)
+                                    />
+                                    Accounting</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="sports"
+                                        id="sports"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(3)
+                                    />
+                                    Sports</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="photography"
+                                        id="photography"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(4)
+                                    />
+                                    Photography</label
+                                >
+                                <br />
+                                  </div>
+                                  <div class="col-3">
+                                    <label
+                                    ><input
+                                        name="programming"
+                                        id="programming"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(5)
+                                    />
+                                    Programming</label
+                                >
+                                <br />
+                                <label>
+                                    <input
+                                        name="electronics"
+                                        id="electronics"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(6)
+                                    />
+                                    Electronics</label
+                                >
+                                <br />
+                                <label>
+                                    <input
+                                        name="medicalscience"
+                                        id="medicalscience"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(7)
+                                    />
+                                    Medical Science</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="humanities"
+                                        id="humanities"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(8)
+                                    />
+                                    Humanities</label
+                                >
+                                <br />
+                                  </div>
+                                  <div class="col-3">
+                                    <label
+                                    ><input
+                                        name="commerce"
+                                        id="commerce"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(9)
+                                    />
+                                    Commerce</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="entrepreneurship"
+                                        id="entrepreneurship"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(10)
+                                    />
+                                    Entrepreneurship</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="blogging"
+                                        id="blogging"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(11)
+                                    />
+                                    Blogging</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="contentwriting"
+                                        id="contentwriting"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(12)
+                                    />
+                                    Content Writing</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="socialwork"
+                                        id="socialwork"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(13)
+                                    />
+                                    Social Work</label
+                                >
+                                <br />
+                                  </div>
+                                  <div class="col-3">
+                                    <label
+                                    ><input
+                                        name="artandpainting"
+                                        id="artandpainting"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(14)
+                                    />
+                                    Art and Painting</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="cookingandbaking"
+                                        id="cookingandbaking"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(15)
+                                    />
+                                    Cooking</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="architecture"
+                                        id="architecture"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(16)
+                                    />
+                                    Architecture</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="interiordesign"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(17)
+                                    />
+                                    Interior Design</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="digitalgraphics"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(18)
+                                    />
+                                    Digital Graphics</label
+                                >
+                                <br />
+                                <label
+                                    ><input
+                                        name="performancearts"
+                                        value="0"
+                                        type="range" min=0 max=10 step=1 value=0
+                                        class="input-range"
+                                        oninput = myfunction(19)
+                                    />
+                                    Performance Arts</label
+                                >
+                                <br />
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="container mx-auto" style="text-align: center">
+                            <button class="btn btn-outline-dark btn-lg ml-2" style="color: orange">
+                                <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                                <lord-icon
+                                    src="https://cdn.lordicon.com//jvihlqtw.json"
+                                    trigger="loop"
+                                    colors="primary:#ffb400,secondary:#ffb400"
+                                    style="width: 30px; height: 30px"
+                                >
+                                </lord-icon>
+                                &nbsp;Sign Up
+                            </button>
+                            <br />
+                        </div>
+
+                        <br />
+          </form>
+        </div>
+
+        <!--Converting range input to dynamically convert range values-->
+        <script>
+
+            function myfunction(x) {
+                var slider = document.getElementsByClassName("input-range")[x];
+                
+                if(slider.value <= 3){
+                    document.getElementsByClassName("input-range")[x].title = "beginner";
+                }
+                else if ((4 <= slider.value) && (slider.value <= 6)){
+                    document.getElementsByClassName("input-range")[x].title = "intermediate";
+                }
+                else {
+                    document.getElementsByClassName("input-range")[x].title = "advanced";
+                }
+            }
+        </script>
+
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
+
+

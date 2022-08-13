@@ -1,0 +1,103 @@
+<%- include("./partials/header") %>
+
+<title>Dashboard</title>
+
+<!-- Links for any stylesheets -->
+<link rel="stylesheet" href="/stylesheets/mentordashboard.css" />
+<div id="cover-pic" style="background-image: url(../images/dashboard.jpeg)">
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+    <div class="container" id="pic">
+        <div id="pic-text-one" style="text-shadow: 0px 0px 10px black">
+            Your <span style="color: #ffb400">Dashboard.</span>
+        </div>
+        <h5 style="color: black; font-weight: bold">Scroll down to view your mentees</h5>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="container">
+    <div class="row">
+        <% for(var i=0;i < mentees.length;i++){ %>
+        <div class="col-3">
+            <div class="card mb-4" style="min-width: 18rem; max-width: 18rem">
+                <img
+                    class="card-img-top"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFJciY4B-an8aHc3nmtbFWAfT9wIZnXlvXhA&usqp=CAU"
+                    alt="Card image cap"
+                />
+                <div class="card-body">
+                    <h5 class="card-title">Name: <%=mentees[i].name %></h5>
+                    <h6 class="card-title">RollNo: 73947<%=i%></h6>
+                    <p class="card-text">City:<%= mentees[i].city %></p>
+                </div>
+                
+
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Read More
+                  </button>
+                  
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel"><%= mentees[i].name %></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row px-3">
+                            <div class="col-6">
+                                  <div>Email: <%=mentees[i].username %></div>
+                                  <br>
+                                  <div>Phone: <%=mentees[i].phone %></div>
+                                  <br>
+                            </div>
+                            <div class="col-6">
+                              <div>City: <%=mentees[i].city %></div>
+                              <br>
+                              <div>State: <%=mentees[i].state %></div>
+                              <br>
+                            </div>
+                        </div>
+                        Interests
+                        <hr>
+                        <div class="row">
+                            
+                            <div class="col-4">Technology</div>
+                            <div class="col-4">Law</div>
+                            <div class="col-4">Sports</div>
+                            <div class="col-4">Entrepreneurship</div>
+                            <div class="col-4">Cooking</div>
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <br>           
+                <button class="btn btn-md  btn-outline-success" href="https://wa.me/91<%=mentees[i].phone%>?text=Hello">
+                    <i class="far fa-comment p-2"></i>  Whatsapp</button>
+            &nbsp;
+                <button  class="btn btn-md btn-outline-primary" href="https://www.zoom.com">
+                    <i class="fas fa-solid fa-video p-2"></i>  Zoom</button>
+            &nbsp;
+            <button  class="btn-md btn  btn-outline-danger" href="https://www.zoom.com">
+                <i class="fas fa-solid fa-cross p-2"></i>Request to change Mentee</button>
+            </div>
+        </div>
+        <div class="col-1"></div>
+        <% } %>
+    </div>
+</div>
+
+<!-- Link for js file if reqd -->
+<script src="/javascript/filename.js"></script>
+
+<%- include("./partials/footer") %>

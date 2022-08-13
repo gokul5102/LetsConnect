@@ -1,0 +1,50 @@
+var mongoose = require("mongoose");
+var passportLocalMongoose = require("passport-local-mongoose");
+
+var userSchema = new mongoose.Schema({
+    username: { type: String, unique: true, required: true },
+    name: String,
+    phone: { type: String, unique: true, required: true },
+    password: String,
+    type: String,
+    blogs: [],
+    threshold: String,
+    lang1: String,
+    lang2: String,
+    lang3: String,
+    gender: String,
+    state: String,
+    district: String,
+    city: String,
+    parentsnumber: String,
+    mentorgender: String,
+    school: String,
+    year: String,
+    grade: String,
+    technology: String,
+    programming: String,
+    electronics: String,
+    medicalscience: String,
+    humanities: String,
+    commerce: String,
+    entrepreneurship: String,
+    blogging: String,
+    contentwriting: String,
+    socialwork: String,
+    artandpainting: String,
+    performancearts: String,
+    cookingandbaking: String,
+    architecture: String,
+    interiordesign: String,
+    digitalgraphics: String,
+    teaching: String,
+    law: String,
+    accounting: String,
+    sports: String,
+    photography: String,
+
+    rejected: [],
+});
+
+userSchema.plugin(passportLocalMongoose, { usernameUnique: false });
+module.exports = mongoose.model("User", userSchema);

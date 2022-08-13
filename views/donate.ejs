@@ -1,0 +1,180 @@
+<%- include("./partials/header") %>
+<title>Aid | Donate </title>
+
+    <link rel="stylesheet" href="/stylesheets/cover-pic.css">
+    <link rel="stylesheet" href="/stylesheets/donate.css">
+
+
+    <div id="cover-pic" style="  background-image: url(../images/donate1.jfif)">
+        <br><br><br><br><br><br><br><br><br><br><br>
+        <div class="container" id="pic">
+            <div id="pic-text-one">Donate to <b>Lets</b><span style="color:#ffb400">.</span></div>
+            <div id="pic-text-two"> Together we can and we will make a difference!</div>
+            <br>
+            <a id="pic-button" class="btn btn-md" href="#donate-box">DONATE</a>
+        </div>
+    </div>
+    <div id="donate-box">
+        <br><br>
+        <br><br>
+        <div class="row mx-auto mr-md-0 p-2">
+            <div class=" col-12 col-md-6 " > 
+                <div class="container m-0 donate-cont">
+                    <div class="where">
+                        <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com//qhviklyi.json" trigger="loop"
+                            colors="primary:#121331,secondary:#e8b730" style="width:80px;height:80px">
+                        </lord-icon> Where does your Money go?
+                    </div>
+                    <br>
+                    <br>
+                    <div>Lets is committed to high standards of accountability and transparency.Your generous donations go towards implementation of our programmes, administration and fundraising.</div>
+                    <br>
+                    <div>
+                        <ul>
+                            <li>85% of donations go to our programmes.</li>
+                            <li>4% go to FundRaising events.</li>
+                            <li>4% go to Monitoring and Evaluation</li>
+                            <li>7% go to Administration</li>
+        
+                        </ul>
+                    </div>
+                    <u>We ensure that every single Penny what you donate will be solely used for Charity purpose.</u>
+
+                </div>
+            </div>
+            <div class=" col-12 col-md-6 mt-4 mt-md-0">
+                <div class="container donate-cont">
+                    <div class="where">
+                        <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com//yeallgsa.json" trigger="loop"
+                            colors="primary:#121331,secondary:#eeca66" style="width:80px;height:80px">
+                        </lord-icon>Donate Now
+                    </div>
+                    <br>
+                    <br>
+                    <form id="inputform" action="/donate" method="POST">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+
+                                    <input required type="text" class="form-control" placeholder="Your Name"
+                                        name="name" required>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+
+                                    <input required type="text" class="form-control" placeholder="Your Email"
+                                        name="email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Donate in honor or in memory of a loved one</label>
+                            <textarea type="text" class="form-control" placeholder="Donation message"
+                                name="message"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>How much do you want to Donate ? (In Rs.)</label>
+                            <input  id="amount" type="number" class="form-control" name="amount" min=10 step="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Anonymoues Donation ?</label>
+                            <br>
+                            <span>
+                                <input type="checkbox" id="vehicle1" name="ano">
+                                <small>Check this box to remain anonymous on the donor list.</small><br>
+                            </span>
+
+                        </div>
+
+                        
+
+
+                    </form>
+                    <button  id="donate_button" class="btn btn-outline-dark" style="color:orange">
+                        <script src="https://cdn.lordicon.com//libs/frhvbuzj/lord-icon-2.0.2.js"></script>
+                        <lord-icon src="https://cdn.lordicon.com//jvihlqtw.json" trigger="loop"
+                            colors="primary:#eeaa66,secondary:#eeaa66" style="width:20px;height:20px">
+                        </lord-icon> Donate
+                    </button>
+                   
+                </div>
+            </div>
+        </div>
+        <br>
+    <br>
+    <br>
+    </div>
+    <script>
+        document.getElementById("donate_button").onclick = function (e) {
+          var url = "/api/payment/order";
+          var am= Number(document.getElementById("amount").value);
+          var params = {
+            amount: am * 100,
+            currency: "INR",
+            receipt: "NAME",
+            payment_capture: "1",
+          };
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.onreadystatechange = function (res) {
+            if (xmlHttp.readyState === 4) {
+              res = JSON.parse(xmlHttp.responseText);
+              func(res.sub.id);
+            }
+          };
+          xmlHttp.open("POST", url, true);
+          xmlHttp.setRequestHeader("Content-type", "application/json");
+          xmlHttp.send(JSON.stringify(params));
+        };
+      </script>
+      <!-- <button id="rzp-button1">Checkout</button> -->
+      <div id="paymentDetails"></div>
+      <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+      <script>
+        function func(id) {
+          console.log("inside onchange");
+          console.log(id);
+          var options = {
+            key: "<%= key %>",
+            currency: "INR",
+            name: "NAME",
+            description: "DESCRIPTION",
+            order_id: id,
+            handler: function (response) {
+              func2(
+                response.razorpay_order_id,
+                response.razorpay_payment_id,
+                response.razorpay_signature
+              );
+            },
+            theme: {
+              color: "#F0B651",
+            },
+          };
+          var rzp1 = new Razorpay(options);
+          rzp1.open();
+          //e.preventDefault();
+        }
+    
+        function func2(order_id, payment_id, sig_id) {
+          var url = "/api/payment/verify";
+          var params = {
+            razorpay_order_id: order_id,
+            razorpay_payment_id: payment_id,
+            razorpay_signature: sig_id,
+          };
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.onreadystatechange = function (res) {
+            if (xmlHttp.readyState === 4) {
+              document.getElementById("inputform").submit();
+            }
+          };
+          xmlHttp.open("POST", url, true); // false for synchronous request
+          xmlHttp.setRequestHeader("Content-type", "application/json");
+          xmlHttp.send(JSON.stringify(params));
+        }
+      </script>
+    
+<%- include("./partials/footer") %>
