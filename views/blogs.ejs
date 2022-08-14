@@ -1,64 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-        <!-- Bootstrap CSS -->
-        <link
-            rel="stylesheet"
-            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-            crossorigin="anonymous"
-        />
-        
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-        />
-        <title>Forum</title>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-weight:bold">
-            <a class="navbar-brand" href="/">Lets Connect [FORUM]</a>
-            <button
-                class="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarText"
-                aria-controls="navbarText"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-            >
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav mr-auto">
-                
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Donate">Donate</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/Scholarships">Scholarships</a>
-                    </li>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-                    <% if(!currentUser) {%>
-                        <li class="nav-item">
-                            <a class="nav-link link-navbar" href="/login">Login |</a>
-                        </li>
-                        <% } else { %>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <title>Forum</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-weight:bold">
+        <a class="navbar-brand" href="/">Lets Connect [FORUM]</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+            aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/Donate">Donate</a>
+                </li>
+                <% if(!currentUser) {%>
+                    <li class="nav-item">
+                        <a class="nav-link link-navbar" href="/login">Login |</a>
+                    </li>
+                    <% } else { %>
                         <li class="nav-item dropdown">
-                            <a
-                                class="nav-link dropdown-toggle link-navbar"
-                                href="#"
-                                id="navbarDropdown"
-                                role="button"
-                                data-toggle="dropdown"
-                                aria-haspopup="true"
-                                aria-expanded="false"
-                            >
-                                <i><%= currentUser.name %></i>
+                            <a class="nav-link dropdown-toggle link-navbar" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i>
+                                    <%= currentUser.name %>
+                                </i>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item link-navbar" href="/profile">Profile</a>
@@ -67,93 +46,96 @@
                             </div>
                         </li>
                         <%}%>
-                </ul>
+            </ul>
 
-                <span class="navbar-text">  </span>
-            </div>
-        </nav>
-        <br />
-        <br />
-        <div class="d-flex flex-row-reverse mr-5">
-            <a class="btn btn-lg btn-outline-warning" href="/newblog">Add a new Blog</a>
+            <span class="navbar-text"> </span>
         </div>
-        <h1 class="pl-5">BLOGS:</h1>
-        <hr>
-        <div class="container">
-            <div class="row">
-                <%  blogs.forEach((blog)=>{ %>
+    </nav>
+    <br />
+    <br />
+    <div class="d-flex flex-row-reverse mr-5">
+        <a class="btn btn-lg btn-outline-warning" href="/newblog">Add a new Blog</a>
+    </div>
+    <h1 class="pl-5">BLOGS:</h1>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <% blogs.forEach((blog)=>{ %>
                 <div class="col-4">
-                   
-                        <div class="container m-2"  style="background-color: antiquewhite;box-shadow:2px 2px 5px grey; max-height:320px;min-height:320px;overflow-y:scroll; ">
-                            <h3><%= blog.title %></h3>
-                            <div><%= blog.authorname %> <small class="text-muted">(<%= blog.date %>)</small></div>
-                            <br>
-                            <div> <i><%= blog.body %></i></div>
-                            <hr>
-                            <form action="/forum/<%= blog._id %>/comment" method="POST">
-                                <div class="row" >
-                                  <div class="col-9">
-                                    <input
-                                    required
-                                    type="text"
-                                    class="form-control"
-                                    placeholder="Add your comment"
-                                    name="comment"
-                                  />
-                                  </div>
-                                  <div class="col-3">
-                                    <input type="submit" class="btn btn-sm btn-outline-success">
-                                  </div>
-                                
-                                </div>
-                              </form>
-                            <br>
-                              
-                              
-                              
-                            <button class="accordion">View All Comments</button>
-                            <div class="panel">
-                              <% if ( blog.comments.length > 0){ %> 
-                              <%for(i= blog.comments.length-1; i>-1;i--){%>
-                              <div > @<%= blog.comments[i].authorname %> : <%= blog.comments[i].body %></div>
-                             
-                              <hr>
-                              <% } %> 
-                              <% }else{ %>
-                              <div>No comments yet !</div>
-                              <% } %>
-                            </div>    
-                        
+
+                    <div class="container m-2"
+                        style="background-color: antiquewhite;box-shadow:2px 2px 5px grey; max-height:320px;min-height:320px;overflow-y:scroll; ">
+                        <h3>
+                            <%= blog.title %>
+                        </h3>
+                        <div>
+                            <%= blog.authorname %> <small class="text-muted">(<%= blog.date %>)</small>
                         </div>
-                    
+                        <br>
+                        <div> <i>
+                                <%= blog.body %>
+                            </i></div>
+                        <hr>
+                        <form action="/forum/<%= blog._id %>/comment" method="POST">
+                            <div class="row">
+                                <div class="col-9">
+                                    <input required type="text" class="form-control" placeholder="Add your comment"
+                                        name="comment" />
+                                </div>
+                                <div class="col-3">
+                                    <input type="submit" class="btn btn-sm btn-outline-success">
+                                </div>
+
+                            </div>
+                        </form>
+                        <br>
+
+
+
+                        <button class="accordion">View All Comments</button>
+                        <div class="panel">
+                            <% if ( blog.comments.length> 0){ %>
+                                <%for(i= blog.comments.length-1; i>-1;i--){%>
+                                    <div> @<%= blog.comments[i].authorname %> : <%= blog.comments[i].body %>
+                                    </div>
+
+                                    <hr>
+                                    <% } %>
+                                        <% }else{ %>
+                                            <div>No comments yet !</div>
+                                            <% } %>
+                        </div>
+
+                    </div>
+
                 </div>
                 <% }) %>
-            </div>
         </div>
+    </div>
 
-        
 
-        <br><br>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-        <script>
-            var acc = document.getElementsByClassName("accordion");
-var i;
 
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
+    <br><br>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
 
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-        </script>
-<%- include("./partials/footer") %>
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                /* Toggle between adding and removing the "active" class,
+                to highlight the button that controls the panel */
+                this.classList.toggle("active");
+
+                /* Toggle between hiding and showing the active panel */
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <%- include("./partials/footer") %>
