@@ -5,5 +5,11 @@ team*.zip
 *.crt
 *.key
 *.ovpn
-.env
 node_modules/
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
