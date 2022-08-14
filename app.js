@@ -507,7 +507,7 @@ function isLoggedIn(req, res, next) {
   }
 }
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 //--------------------------------RUN -----------------------------------
 app.listen(PORT, function (req, res) {
   console.log("rollin");
