@@ -33,24 +33,25 @@ var Match = require("./models/Match");
 
 // //-------------------NODEMAILER-------------------------
 
-// const nodemailer = require("nodemailer");
-// var transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     // user: process.env.email,
-//     // pass: process.env.pwd,
-//   },
-// });
+const nodemailer = require("nodemailer");
+var transporter = nodemailer.createTransport({
+  host: "smtp.mailtrap.io",
+  port: 2525,
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASSWORD,
+  },
+});
 
-// function send(mailOptions) {
-//   transporter.sendMail(mailOptions, function (error, info) {
-//     if (error) {
-//       console.log(error);
-//     } else {
-//       console.log("Email sent: " + info.response);
-//     }
-//   });
-// }
+function send(mailOptions) {
+  transporter.sendMail(mailOptions, function (error, info) {
+    if (error) {
+      console.log(error);
+    } else {
+      console.log("Email sent: " + info.response);
+    }
+  });
+}
 
 //----------------------OTHERS & AUTH ----------------------
 app.use(express.json());
@@ -147,11 +148,15 @@ app.post("/api/payment/order", (req, res) => {
 app.post("/api/payment/verify", (req, res) => {
   body = req.body.razorpay_order_id + "|" + req.body.razorpay_payment_id;
 
-  var expectedSignature = crypto.createHmac("sha256", process.env.KEY_SECRET).update(body.toString()).digest("hex");
+  var expectedSignature = crypto
+    .createHmac("sha256", process.env.KEY_SECRET)
+    .update(body.toString())
+    .digest("hex");
   console.log("sig" + req.body.razorpay_signature);
   console.log("sig" + expectedSignature);
   var response = { status: "failure" };
-  if (expectedSignature === req.body.razorpay_signature) response = { status: "success" };
+  if (expectedSignature === req.body.razorpay_signature)
+    response = { status: "success" };
   res.send(response);
 });
 
@@ -160,33 +165,41 @@ app.get("/razorpay");
 // ----------------- DONATE --------------------------
 
 app.post("/donate", async function (req, res) {
-  ejs.renderFile(path.join(__dirname, "./views/", "certificate.ejs"), { name: req.body.name, amount: req.body.amount }, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.send({ error: err });
-    } else {
-      let options = {
-        header: {
-          height: "20mm",
-        },
-        footer: {
-          height: "20mm",
-        },
-        format: "A2",
-      };
+  ejs.renderFile(
+    path.join(__dirname, "./views/", "certificate.ejs"),
+    { name: req.body.name, amount: req.body.amount },
+    (err, data) => {
+      if (err) {
+        console.log(err);
+        res.send({ error: err });
+      } else {
+        let options = {
+          header: {
+            height: "20mm",
+          },
+          footer: {
+            height: "20mm",
+          },
+          format: "A2",
+        };
 
-      pdf.create(data, options).toFile("certificate.pdf", function (err, data) {
-        if (err) {
-          console.log(err);
-          res.send({ error: err });
-        } else {
-          console.log("CERTIFICATE");
-          var mailOptions = {
-            from: "AID",
-            to: req.body.email,
-            subject: "Certificate for Donating to Aid",
-            attachments: { filename: "certificate.pdf", path: "./certificate.pdf" },
-            html: `<h1>Hello ${req.body.name} ! </h1>
+        pdf
+          .create(data, options)
+          .toFile("certificate.pdf", function (err, data) {
+            if (err) {
+              console.log(err);
+              res.send({ error: err });
+            } else {
+              console.log("CERTIFICATE");
+              var mailOptions = {
+                from: "AID",
+                to: req.body.email,
+                subject: "Certificate for Donating to Aid",
+                attachments: {
+                  filename: "certificate.pdf",
+                  path: "./certificate.pdf",
+                },
+                html: `<h1>Hello ${req.body.name} ! </h1>
             <h2>Thank you for your generous Donation of Rs. ${req.body.amount} to Aid.</h2>
             <h4> Your smallest contribution could change someone's life ! </h4>
             <div> Stay assured, your money will be used for a good cause. </div>
@@ -194,12 +207,13 @@ app.post("/donate", async function (req, res) {
           <br>
            <div>We hope you won't stop here and will further support the good causes of Humanity.</div>
             <div>Happy Charity ! </div> <div> Because even the smallest contribution matters. </div><br> <small>Best Regards ,</small><b> AID.</b> `,
-          };
-          send(mailOptions);
-        }
-      });
+              };
+              send(mailOptions);
+            }
+          });
+      }
     }
-  });
+  );
   res.render("submitD", { name: req.body.name, email: req.body.email });
 });
 
@@ -391,11 +405,19 @@ app.post("/signup", function (req, res) {
   User.register(newUser, req.body.password, function (err, user) {
     if (err) {
       console.log(err);
-      if (err.message == "A user with the given username is already registered") {
-        req.flash("error", "A user with the given Email Id is already registered");
+      if (
+        err.message == "A user with the given username is already registered"
+      ) {
+        req.flash(
+          "error",
+          "A user with the given Email Id is already registered"
+        );
         return res.redirect("/signin");
       } else {
-        req.flash("error", "A user with the given Phone No. is already registered");
+        req.flash(
+          "error",
+          "A user with the given Phone No. is already registered"
+        );
         return res.redirect("/signin");
       }
     } else {
@@ -427,13 +449,16 @@ app.get("/match", async function (req, res) {
       console.log(requestBody);
       console.log("request2");
       console.log("request3");
-      const response = await fetch("http://localhost:8000/ml", {
-        method: "POST",
-        body: JSON.stringify(requestBody),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://match-alogorithm.herokuapp.com/ml",
+        {
+          method: "POST",
+          body: JSON.stringify(requestBody),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       const data = await response.json();
       //const data = { 123: ["123", "456"], abc: [123, 456] };
       matches = [];
