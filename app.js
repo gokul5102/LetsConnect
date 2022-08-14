@@ -29,7 +29,7 @@ const cors = require("cors");
 var User = require("./models/user");
 var Comment = require("./models/comment");
 var Blog = require("./models/blog");
-var Match = require("./models/Match");
+var Match = require("./models/match");
 
 // //-------------------NODEMAILER-------------------------
 
